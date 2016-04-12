@@ -1,0 +1,30 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- hosts: spacetime
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Run apt-get update
+      apt: update_cache=yes
+
+    - name: apt-get install build-essential
+      apt: name=build-essential
+
+    - name: apt-get install python-dev
+      apt: name=python-dev
+
+    - name: apt-get install python-pip
+      apt: name=python-pip
+
+    - name: pip install luigi
+      pip: name=luigi
+
+    - name: apt-get install gdal-bin
+      apt: name=gdal-bin
+
+    - name: apt-get install jq
+      apt: name=jq
+
+    # - name: npm install -g forever
+    #   npm: name=forever global=yes

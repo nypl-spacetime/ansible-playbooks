@@ -1,0 +1,14 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- hosts: spacetime
+  vars:
+    tools:
+      - spacetime-import
+      - spacetime-etl
+      - spacetime-config
+      - spacetime-supernova
+
+  tasks:
+    - include: includes/npm-install-global.yml name={{ item }}
+      with_items: "{{ tools }}"

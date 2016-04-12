@@ -1,0 +1,14 @@
+#!/usr/bin/env ansible-playbook
+---
+
+# TODO: add git branch parameter!
+
+- hosts: spacetime
+  vars:
+    tools:
+      - spacetime-api
+      - spacetime-core
+
+  tasks:
+    - include: includes/update-spacetime-service.yml name={{ item }}
+      with_items: "{{ tools }}"

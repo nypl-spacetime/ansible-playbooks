@@ -1,0 +1,31 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- hosts: spacetime
+  vars:
+    etl_modules:
+      # - building-inspector-1854-directory
+      # - streets-addresses
+      - building-inspector
+      - centerlines
+      - mapwarper
+      - oldnyc
+      # - tgn-geonames
+      # - 1854-directory
+      - wards
+      - geonames
+      - tgn
+      - cemeteries
+      # - registry
+      # - whosonfirst
+      # - fast
+      # - mms
+      # - perris
+      # - stats-test
+
+  tasks:
+    - shell: "spacetime-config --config {{ config_file }} | jq -r '.data.moduleDir'"
+      register: module_dir_stdout
+
+    - include: includes/etl-module.yml name={{ item }} module_dir={{ module_dir_stdout.stdout }}
+      with_items: "{{ etl_modules }}"

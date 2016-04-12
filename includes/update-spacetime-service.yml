@@ -1,0 +1,28 @@
+- name: Stop service {{ name }}
+  shell: "stop {{ name }}"
+  become: yes
+  become_method: sudo
+  ignore_errors: yes
+
+- name: Get latest version of Space/Time service {{ name }} from GitHub
+  git: repo=git://github.com/nypl-spacetime/{{ name }}.git
+       dest={{ base_dir }}/{{ name }}
+
+- npm: path={{ base_dir }}/{{ name }}
+
+- name: Creating upstart script
+  template: src=../templates/service.conf
+            dest=/etc/init/{{ name }}.conf
+            owner=root group=root mode="u=rw,g=r,o=r"
+  become: yes
+  become_method: sudo
+
+- name: Reload upstart configuration
+  shell: "initctl reload-configuration"
+  become: yes
+  become_method: sudo
+
+- name: Start service {{ name }}
+  shell: "start {{ name }}"
+  become: yes
+  become_method: sudo

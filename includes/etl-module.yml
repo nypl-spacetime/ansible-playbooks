@@ -1,0 +1,5 @@
+- name: Get latest version of ETL module {{ name }} from GitHub
+  git: repo=git://github.com/nypl-spacetime/etl-{{ name }}.git
+       dest={{ module_dir }}/etl-{{ name }}
+
+- npm: path={{ module_dir }}/etl-{{ name }}

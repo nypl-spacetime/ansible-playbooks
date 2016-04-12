@@ -1,0 +1,8 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- hosts: spacetime
+  tasks:
+    - name: Get latest version of Luigi tasks from GitHub
+      git: repo=git://github.com/nypl-spacetime/luigi-tasks.git
+           dest={{ base_dir }}/luigi-tasks
