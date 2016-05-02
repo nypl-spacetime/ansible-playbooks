@@ -5,10 +5,10 @@
 
 - hosts: spacetime
   vars:
-    tools:
+    services:
       - spacetime-api
       - spacetime-core
 
   tasks:
     - include: includes/update-spacetime-service.yml name={{ item }}
-      with_items: "{{ tools }}"
+      with_items: "{{ services }}"

@@ -4,18 +4,22 @@
 - hosts: spacetime
   vars:
     etl_modules:
-      # - building-inspector-1854-directory
-      # - streets-addresses
       - building-inspector
       - centerlines
       - mapwarper
       - oldnyc
-      # - tgn-geonames
-      # - 1854-directory
+      - 1854-directory
       - wards
       - geonames
       - tgn
       - cemeteries
+
+      - tgn-geonames
+      - building-inspector-centerlines
+      - building-inspector-1854-directory
+
+      - liesin-per-dataset
+
       # - registry
       # - whosonfirst
       # - fast

@@ -1,0 +1,12 @@
+#!/usr/bin/env ansible-playbook
+---
+
+- hosts: spacetime
+  tasks:
+    - name: "Execute Luigi: {{ dataset }} {{ step }}"
+      shell: "luigi --module datasets.{{ dataset }} {{ step }}"
+      register: output
+      environment:
+        PYTHONPATH: /opt/histograph/luigi-tasks
+
+    - debug: var=output.stdout_lines

@@ -13,7 +13,8 @@
       fail: msg="Supernova aborted"
       when: confirmation != "yes"
 
-    - shell: "spacetime-supernova --config {{ config_file }}"
+    - name: Executing Supernova
+      shell: "spacetime-supernova --config {{ config_file }}"
       register: output
 
     - debug: var=output.stdout_lines

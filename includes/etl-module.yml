@@ -3,3 +3,4 @@
        dest={{ module_dir }}/etl-{{ name }}
 
 - npm: path={{ module_dir }}/etl-{{ name }}
+       production=yes

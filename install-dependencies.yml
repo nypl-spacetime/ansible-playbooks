@@ -20,11 +20,14 @@
     - name: pip install luigi
       pip: name=luigi
 
+    - name: pip install python-dateutil
+      pip: name=python-dateutil
+
+    - name: pip install pytz
+      pip: name=pytz
+
     - name: apt-get install gdal-bin
       apt: name=gdal-bin
 
     - name: apt-get install jq
       apt: name=jq
-
-    # - name: npm install -g forever
-    #   npm: name=forever global=yes

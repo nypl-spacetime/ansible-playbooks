@@ -9,6 +9,10 @@
       - spacetime-config
       - spacetime-supernova
 
+      - spacetime-db-neo4j
+      - spacetime-db-postgis
+      - spacetime-db-elasticsearch
+
   tasks:
     - include: includes/npm-install-global.yml name={{ item }}
       with_items: "{{ tools }}"

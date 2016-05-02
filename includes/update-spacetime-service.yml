@@ -9,6 +9,7 @@
        dest={{ base_dir }}/{{ name }}
 
 - npm: path={{ base_dir }}/{{ name }}
+       production=yes
 
 - name: Creating upstart script
   template: src=../templates/service.conf

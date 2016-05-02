@@ -1,5 +1,6 @@
 - name: Installing {{ name }} globally
-  npm: name=nypl-spacetime/{{ name }} global=yes
-  # shell: npm i -g nypl-spacetime/{{ name }}
+  npm: name=nypl-spacetime/{{ name }}
+       global=yes
+       production=yes
   become: yes
   become_method: sudo
